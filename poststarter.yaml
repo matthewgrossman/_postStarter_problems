@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: poststarter-example
+spec:
+  initContainers:
+    - name: init-simple
+      image: ubuntu:latest
+      command: ['sh', '-c', "echo 'presleep'; sleep 5; echo 'postsleep'"]
+  containers:
+  - name: poststarter-example-containers
+    image: nginx
+    lifecycle:
+      postStart:
+        exec:
+          command: ["/bin/sh", "-c", "echo 'example multiline command'; sleep 5; find /usr -type d; exit 1"]
