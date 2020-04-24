@@ -13,4 +13,4 @@ spec:
     lifecycle:
       postStart:
         exec:
-          command: ["/bin/sh", "-c", "echo 'example multiline command'; sleep 5; find /usr -type d; exit 1"]
+          command: ["/bin/sh", "-c", "echo 'example multiline command'; sleep 10; find /usr -type d; exit 1"]
